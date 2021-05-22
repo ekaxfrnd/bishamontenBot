@@ -1,6 +1,6 @@
 const { exec } = require('child_process')
 
-module.exports = exec('bash ../commands_util/startsnort.sh', (err, stdout, stderr) => {
+const startSnort = exec('bash ../commands_util/startsnort.sh', (err, stdout, stderr) => {
     if(err) {
         console.log(`err: ${err.message}`)
     }
@@ -8,3 +8,5 @@ module.exports = exec('bash ../commands_util/startsnort.sh', (err, stdout, stder
         console.log(`snort run successfully.`)
     }
 })
+
+module.exports = startSnort
