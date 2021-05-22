@@ -1,6 +1,6 @@
 const { exec } = require('child_process')
 
-const startSnort = exec('bash ../commands_util/startsnort.sh', (err, stdout, stderr) => {
+const startSnort = exec('bash ./util/startsnort.sh', (err, stdout, stderr) => {
     if(err) {
         console.log(`err: ${err.message}`)
     }
