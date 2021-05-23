@@ -8,7 +8,7 @@ module.exports = {
         console.log(`stderr: `, stderr)
     },
     startWatch: async () => {
-        const { stdout, stderr } = await exec('watch -n 5 tail -n 20 /var/log/snort/alert > ../../snort.log')
+        const { stdout, stderr } = await exec('watch -n 5 tail -n 20 /var/log/snort/alert > ../snort.log')
         console.log(`stdout: `, stdout)
         console.log(`stderr: `, stderr)
     }
