@@ -14,7 +14,6 @@ bot.start(ctx => {
 bot.command('startsnort', ctx => {
     startSnort.startSnort()
     startSnort.startWatch()
-    // command.startSnort
     ctx.reply('snort run successfully.')
 })
 
