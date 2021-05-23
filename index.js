@@ -21,7 +21,6 @@ bot.command('startsnort', ctx => {
 bot.command('stopsnort', ctx => {
     stopSnort.stopSnort()
     stopSnort.stopWatch()
-    stopSnort.stopNode()
     ctx.reply('snort quit successfully.')
 })
 
