@@ -11,10 +11,5 @@ module.exports = {
         const { stdout, stderr } = await exec('killall watch')
         console.log(`stdout: `, stdout)
         console.log(`stderr: `, stderr)
-    },
-    stopNode: async () => {
-        const { stdout, stderr } = await exec('killall node')
-        console.log(`stdout: `, stdout)
-        console.log(`stderr: `, stderr)
     }
 }
