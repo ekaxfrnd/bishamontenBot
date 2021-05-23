@@ -5,14 +5,15 @@ require('dotenv').config()
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
-// const command = require('./commands/index')
+const startSnort = require('./commands/startSnort')
 
 bot.start(ctx => {
     ctx.reply('Hello there, I\'m Bishamon. Type /help to see more commands.')
 })
 
 bot.command('startsnort', ctx => {
-    require('./commands/startSnort')
+    startSnort.startSnort()
+    startSnort.startWatch()
     // command.startSnort
     ctx.reply('snort run successfully.')
 })
