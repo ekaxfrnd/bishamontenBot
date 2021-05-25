@@ -17,13 +17,13 @@ bot.help(ctx => {
     ctx.reply(helpMessage)
 })
 
-bot.command('startsnort', ctx => {
+bot.command('snortstart', ctx => {
     snortStart.snortStart()
     snortStart.watchStart()
     ctx.reply('snort run successfully.')
 })
 
-bot.command('stopsnort', ctx => {
+bot.command('snortstop', ctx => {
     snortStop.snortStop()
     snortStop.watchStop()
     ctx.reply('snort quit successfully.')
