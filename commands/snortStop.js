@@ -2,7 +2,7 @@ const util = require('util')
 const exec = util.promisify(require('child_process').exec)
 
 module.exports = {
-    snortStart: async () => {
+    snortStop: async () => {
         const { stdout, stderr } = await exec('sudo killall snort')
         if(stdout) {
             console.log(`stdout: `, stdout)
