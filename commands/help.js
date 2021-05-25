@@ -1,4 +1,4 @@
-module.exports {
+module.exports = {
     help: `I can help you monitor snort logs from telegram.
 
 You can control me by sending these commands:
