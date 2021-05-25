@@ -5,16 +5,16 @@ require('dotenv').config()
 
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
-const helpMessage = require('./commands/help')
+const messages = require('./messages')
 const snortStart = require('./commands/snortStart')
 const snortStop = require('./commands/snortStop')
 
 bot.start(ctx => {
-    ctx.reply('Hello there, I\'m Bishamon. Type /help to see more commands.')
+    ctx.reply(messages.start)
 })
 
 bot.help(ctx => {
-    ctx.reply(helpMessage)
+    ctx.reply(messages.help)
 })
 
 bot.command('snortstart', ctx => {
