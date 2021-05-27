@@ -38,7 +38,6 @@ bot.command('snortstart', async ctx => {
     try {
         await snortstart()
         ctx. reply('snort run successfully.')
-        
     } catch (err) {
         ctx.reply('snort failed to start.')
     }
