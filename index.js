@@ -47,9 +47,9 @@ bot.command('snortstop', async ctx => {
 bot.command('snortrestart', async ctx => {
     const snortrestart = () => {
         snortStop.watchStop()
+        snortStop.snortStop()
         snortStart.snortStart()
         snortStart.watchStart()
-        snortStop.snortStop()
     }
     try {
         await snortrestart()
