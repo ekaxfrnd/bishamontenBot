@@ -23,9 +23,9 @@ bot.command('snortstart', async ctx => {
         snortStart.watchStart()
     }
     try {
-        if(await snortstart()) {
-            ctx. reply('snort run successfully.')
-        }
+        await snortstart()
+        ctx. reply('snort run successfully.')
+        
     } catch (err) {
         ctx.reply('snort failed to start.')
     }
