@@ -4,16 +4,16 @@ module.exports = {
 
 You can control me by sending these commands:
 
-bold General
+# General
 /start - start the bot
 /help - show this help
 
-bold Snort
+# Snort
 /snortstart - run snort
 /snortstop - stop snort
-/snortrestart - restart snort
+/snortrestart - restart snort (beta testing)
 /snortstatus - check snort status
 
-bold Log
+# Log
 /logstart - start displaying the snort log`
 }
