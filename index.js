@@ -28,10 +28,6 @@ bot.help((ctx) => {
 });
 
 bot.command("snortstart", async (ctx) => {
-    const snortstart = () => {
-        snortStart.snortStart();
-        snortStart.watchStart();
-    };
     try {
         await snortstart();
         ctx.reply("snort run successfully.");
