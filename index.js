@@ -9,16 +9,16 @@ const messages = require('./messages')
 const snortStart = require('./commands/snortStart')
 const snortStop = require('./commands/snortStop')
 
-const snortstart = () => {
-    snortStart.snortStart();
-    snortStart.watchStart();
+const snortstart = async () => {
+    await snortStart.snortStart();
+    await snortStart.watchStart();
 };
 
-const snortrestart = () => {
-    snortStop.snortStop();
-    snortStop.watchStop();
-    snortStart.snortStart();
-    snortStart.watchStart();
+const snortrestart = async () => {
+    await snortStop.snortStop();
+    await snortStop.watchStop();
+    await snortStart.snortStart();
+    await snortStart.watchStart();
 };
 
 bot.start(ctx => {
