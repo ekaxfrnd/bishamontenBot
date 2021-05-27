@@ -9,6 +9,18 @@ const messages = require('./messages')
 const snortStart = require('./commands/snortStart')
 const snortStop = require('./commands/snortStop')
 
+const snortstart = () => {
+    snortStart.snortStart();
+    snortStart.watchStart();
+};
+
+const snortrestart = () => {
+    snortStop.snortStop();
+    snortStop.watchStop();
+    snortStart.snortStart();
+    snortStart.watchStart();
+};
+
 bot.start(ctx => {
     ctx.reply(messages.start)
 })
@@ -18,10 +30,6 @@ bot.help(ctx => {
 })
 
 bot.command('snortstart', async ctx => {
-    const snortstart = () => {
-        snortStart.snortStart()
-        snortStart.watchStart()
-    }
     try {
         await snortstart()
         ctx. reply('snort run successfully.')
@@ -32,10 +40,7 @@ bot.command('snortstart', async ctx => {
 })
 
 bot.command('snortstop', async ctx => {
-    const snortstop = () => {
-        snortStop.snortStop()
-        snortStop.watchStop()
-    }
+    
     try {
         await snortstop()
         ctx.reply('snort quit successfully.')
@@ -45,12 +50,6 @@ bot.command('snortstop', async ctx => {
 })
 
 bot.command('snortrestart', async ctx => {
-    const snortrestart = () => {
-        snortStop.snortStop()
-        snortStop.watchStop()
-        snortStart.snortStart()
-        snortStart.watchStart()
-    }
     try {
         await snortrestart()
         ctx.reply('snort has restarted successfully.')
