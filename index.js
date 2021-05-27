@@ -14,6 +14,11 @@ const snortstart = async () => {
     await snortStart.watchStart();
 };
 
+const snortstop = async () => {
+    await snortStop.snortStop()
+    await snortStop.watchStop()
+}
+
 const snortrestart = async () => {
     await snortStop.snortStop();
     await snortStop.watchStop();
@@ -40,7 +45,6 @@ bot.command('snortstart', async ctx => {
 })
 
 bot.command('snortstop', async ctx => {
-    
     try {
         await snortstop()
         ctx.reply('snort quit successfully.')
