@@ -10,20 +10,20 @@ const snortStart = require('./commands/snortStart')
 const snortStop = require('./commands/snortStop')
 
 const snortstart = async () => {
-    await snortStart.snortStart();
-    await snortStart.watchStart();
+    snortStart.snortStart();
+    snortStart.watchStart();
 };
 
 const snortstop = async () => {
-    await snortStop.snortStop()
-    await snortStop.watchStop()
+    snortStop.snortStop()
+    snortStop.watchStop()
 }
 
 const snortrestart = async () => {
-    await snortStop.snortStop();
-    await snortStop.watchStop();
-    await snortStart.snortStart();
-    await snortStart.watchStart();
+    snortStop.snortStop();
+    snortStop.watchStop();
+    snortStart.snortStart();
+    snortStart.watchStart();
 };
 
 bot.start(ctx => {
