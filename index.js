@@ -32,9 +32,12 @@ bot.command('snortstart', async ctx => {
 })
 
 bot.command('snortstop', async ctx => {
+    const snortstop = () => {
+        snortStop.snortStop()
+        snortStop.watchStop()
+    }
     try {
-        await snortStop.snortStop()
-        await snortStop.watchStop()
+        await snortstop()
         ctx.reply('snort quit successfully.')
     } catch (err) {
         ctx.reply('snort failed to stop.')
@@ -42,11 +45,14 @@ bot.command('snortstop', async ctx => {
 })
 
 bot.command('snortrestart', async ctx => {
+    const snortrestart = () => {
+        snortStop.watchStop()
+        snortStart.snortStart()
+        snortStart.watchStart()
+        snortStop.snortStop()
+    }
     try {
-        await snortStop.snortStop()
-        await snortStop.watchStop()
-        await snortStart.snortStart()
-        await snortStart.watchStart()
+        await snortrestart()
         ctx.reply('snort has restarted successfully.')
     } catch (err) {
         ctx.reply('snort failed to restart.')
