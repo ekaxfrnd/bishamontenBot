@@ -18,10 +18,14 @@ bot.help(ctx => {
 })
 
 bot.command('snortstart', async ctx => {
+    const snortstart = () => {
+        snortStart.snortStart()
+        snortStart.watchStart()
+    }
     try {
-        await snortStart.snortStart()
-        await snortStart.watchStart()
-        ctx.reply('snort run successfully.')
+        if(await snortstart()) {
+            ctx. reply('snort run successfully.')
+        }
     } catch (err) {
         ctx.reply('snort failed to start.')
     }
