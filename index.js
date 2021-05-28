@@ -19,13 +19,6 @@ const snortstop = async () => {
     snortStop.watchStop()
 }
 
-const snortrestart = async () => {
-    snortStop.snortStop();
-    snortStop.watchStop();
-    snortStart.snortStart();
-    snortStart.watchStart();
-};
-
 bot.start(ctx => {
     ctx.reply(messages.start)
 })
@@ -54,7 +47,8 @@ bot.command('snortstop', async ctx => {
 
 bot.command('snortrestart', async ctx => {
     try {
-        await snortrestart()
+        await snortstop()
+        await snortstop()
         ctx.reply('snort has restarted successfully.')
     } catch (err) {
         ctx.reply('snort failed to restart.')
