@@ -48,7 +48,7 @@ bot.command('snortstop', async ctx => {
 bot.command('snortrestart', async ctx => {
     try {
         await snortstop()
-        await snortstop()
+        await snortstart()
         ctx.reply('snort has restarted successfully.')
     } catch (err) {
         ctx.reply('snort failed to restart.')
