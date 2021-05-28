@@ -3,7 +3,7 @@ const exec = util.promisify(require('child_process').exec)
 
 module.exports = {
     snortStart: async () => {
-        const { stdout, stderr } = await exec('sudo snort -u snort -g snort -i eth0 -c /etc/snort/snort.conf -q -A full -D')
+        const { stdout, stderr } = await exec('sudo systemctl start snort')
         if(stdout) {
             console.log(`stdout: `, stdout)
         }
