@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ekaxfrnd/bishamontenBot#readme",
   "dependencies": {
+    "linebyline": "^1.3.0",
     "telegraf": "^3.38.0"
   },
   "devDependencies": {
