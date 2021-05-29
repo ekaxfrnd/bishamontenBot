@@ -55,4 +55,14 @@ bot.command('snortrestart', async ctx => {
     }
 })
 
+bot.command('logstart', ctx => {
+    fs.watchFile('snort.log', (curr, prev) => {
+        if(curr.mtime != prev.mtime) {
+            fs.readFile('test.log', 'utf8', (err, data) => {
+                ctx.reply(data)
+            })
+        }
+    })
+})
+
 bot.launch()
