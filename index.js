@@ -1,5 +1,6 @@
 const { Telegraf } = require('telegraf')
 const fs = require('fs')
+const readline = require('linebyline')
 
 require('dotenv').config()
 
@@ -39,7 +40,7 @@ bot.command('snortstart', async ctx => {
 bot.command('snortstop', async ctx => {
     try {
         await snortstop()
-        ctx.reply('snort quit successfully.')
+        ctx.reply('snort quitgit  successfully.')
     } catch (err) {
         ctx.reply('snort failed to stop.')
     }
@@ -56,12 +57,24 @@ bot.command('snortrestart', async ctx => {
 })
 
 bot.command('logstart', ctx => {
-    fs.watchFile('snort.log', (curr, prev) => {
-        if(curr.mtime != prev.mtime) {
-            fs.readFile('snort.log', 'utf8', (err, data) => {
-                ctx.reply(data)
-            })
-        }
+    const rl = readline('./snort.log')
+    rl.on('line', (line, lineCount, byteCount) => {
+        const lineSplit = line.split(' ')
+        const months = [
+            'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+            'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+        ]
+        const month = lineSplit[0].slice(1, 2)
+        ctx.reply(`
+-------- Log pada --------
+Tanggal: ${lineSplit[0].slice(3,5)} ${months[Number(month - 1)]} 2021
+Pukul: ${lineSplit[0].slice(6,14)}
+Dari IP: ${lineSplit[lineSplit.length - 3]}
+Ke IP: ${lineSplit[lineSplit.length -1]}
+`)
+    })
+    rl.on('error', e => {
+        console.log(e.message)
     })
 })
 
