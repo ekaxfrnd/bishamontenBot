@@ -56,9 +56,9 @@ bot.command('snortrestart', async ctx => {
     }
 })
 
-bot.command('logstart', async ctx => {
+bot.command('logstart', ctx => {
     try {
-        setInterval(() => {
+        setInterval(async () => {
             const rl = await readline('./snort.log')
             rl.on('line', (line, lineCount, byteCount) => {
                 const lineSplit = line.split(' ')
