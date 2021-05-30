@@ -56,28 +56,32 @@ bot.command('snortrestart', async ctx => {
     }
 })
 
-bot.command('logstart', ctx => {
-    setInterval(() => {
-        const rl = readline('./snort.log')
-        rl.on('line', (line, lineCount, byteCount) => {
-            const lineSplit = line.split(' ')
-            const months = [
-                'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-            ]
-            const month = lineSplit[0].slice(1, 2)
-            ctx.reply(`
--------- Log pada --------
-Tanggal: ${lineSplit[0].slice(3,5)} ${months[Number(month - 1)]} 2021
-Pukul: ${lineSplit[0].slice(6,14)}
-Dari IP: ${lineSplit[lineSplit.length - 3]}
-Ke IP: ${lineSplit[lineSplit.length -1]}
-`)
-        })
-        rl.on('error', e => {
-            console.log(e.message)
-        })
-    }, 3000)
+bot.command('logstart', async ctx => {
+    try {
+        setInterval(() => {
+            const rl = await readline('./snort.log')
+            rl.on('line', (line, lineCount, byteCount) => {
+                const lineSplit = line.split(' ')
+                const months = [
+                    'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                    'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+                ]
+                const month = lineSplit[0].slice(1, 2)
+                ctx.reply(`
+    -------- Log pada --------
+    Tanggal: ${lineSplit[0].slice(3,5)} ${months[Number(month - 1)]} 2021
+    Pukul: ${lineSplit[0].slice(6,14)}
+    Dari IP: ${lineSplit[lineSplit.length - 3]}
+    Ke IP: ${lineSplit[lineSplit.length -1]}
+    `)
+            })
+            rl.on('error', e => {
+                console.log(e.message)
+            })
+        }, 3000)
+    } catch (err) {
+        console.log(err.message)
+    }
 })
 
 bot.launch()
