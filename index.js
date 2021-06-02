@@ -7,18 +7,8 @@ require('dotenv').config()
 const bot = new Telegraf(process.env.BOT_TOKEN)
 
 const messages = require('./messages')
-const snortStart = require('./commands/snortStart')
-const snortStop = require('./commands/snortStop')
-
-const snortstart = async () => {
-    snortStart.snortStart();
-    snortStart.watchStart();
-};
-
-const snortstop = async () => {
-    snortStop.snortStop()
-    snortStop.watchStop()
-}
+const snort = require('./commands/snort')
+const watch = require('./commands/watch')
 
 bot.start(ctx => {
     ctx.reply(messages.start)
@@ -30,7 +20,7 @@ bot.help(ctx => {
 
 bot.command('snortstart', async ctx => {
     try {
-        await snortstart()
+        await snort.snortStart()
         ctx. reply('snort run successfully.')
     } catch (err) {
         ctx.reply('snort failed to start.')
@@ -39,7 +29,7 @@ bot.command('snortstart', async ctx => {
 
 bot.command('snortstop', async ctx => {
     try {
-        await snortstop()
+        await snort.snortStop()
         ctx.reply('snort quit successfully.')
     } catch (err) {
         ctx.reply('snort failed to stop.')
@@ -48,8 +38,7 @@ bot.command('snortstop', async ctx => {
 
 bot.command('snortrestart', async ctx => {
     try {
-        await snortstop()
-        await snortstart()
+        await snort.snortRestart()
         ctx.reply('snort has restarted successfully.')
     } catch (err) {
         ctx.reply('snort failed to restart.')
