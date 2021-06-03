@@ -45,7 +45,7 @@ bot.command('snortrestart', async ctx => {
     }
 })
 
-bot.command('logstart', ctx => {
+bot.command('logstart', async ctx => {
     await watch.watchStart()
     try {
         const rl = await readline('./snort.log')
