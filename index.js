@@ -55,7 +55,7 @@ bot.command('logstart', async ctx => {
             })
             .on('error', err => {
                 ctx.reply(err.message)
-            })
+            }, 3000)
         })
     } catch (err) {
         console.log(err.message)
