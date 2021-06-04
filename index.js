@@ -48,12 +48,14 @@ bot.command('snortrestart', async ctx => {
 bot.command('logstart', async ctx => {
     await watch.watchStart()
     try {
-        const rl = await readline('./snort.log')
-        rl.on('line', (line, lineCount, byteCount) => {
-            ctx.reply(line)
-        })
-        .on('error', err => {
-            ctx.reply(err.message)
+        setInterval(async () => {
+            const rl = await readline('./snort.log')
+            rl.on('line', (line, lineCount, byteCount) => {
+                ctx.reply(line)
+            })
+            .on('error', err => {
+                ctx.reply(err.message)
+            })
         })
     } catch (err) {
         console.log(err.message)
