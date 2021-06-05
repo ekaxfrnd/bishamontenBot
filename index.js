@@ -33,7 +33,6 @@ bot.command('snortstop', async ctx => {
         ctx.reply('snort quit successfully.')
     } catch (err) {
         ctx.reply('snort failed to stop.')
-        
     }
 })
 
